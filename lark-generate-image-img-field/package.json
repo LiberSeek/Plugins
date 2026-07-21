@@ -1,7 +1,7 @@
 {
   "name": "lark-generate-image-img-field",
   "version": "1.0.0",
-  "description": "飞书多维表字段捷径：使用云雾 gpt-image-2 生成图片附件",
+  "description": "飞书多维表字段捷径：使用 BOFT gpt-image-2 生成图片附件",
   "main": "src/index.ts",
   "scripts": {
     "start": "block-basekit-cli start:field",

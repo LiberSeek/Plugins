@@ -8,9 +8,9 @@ import {
   DEFAULT_SIZE,
   MAX_OUTPUT_ATTACHMENTS,
   MAX_REFERENCE_IMAGES,
-  YUNWU_API_BASE_URL,
-  YUNWU_AUTH_ID,
-  YUNWU_GENERATIONS_ENDPOINT
+  BOFT_API_BASE_URL,
+  BOFT_AUTH_ID,
+  BOFT_GENERATIONS_ENDPOINT
 } from "./constants";
 
 export type ShortcutResult = {
@@ -276,7 +276,7 @@ function normalizeParams(params: ExecuteParams) {
     feishuAppId: String(params.feishuAppId ?? "").trim(),
     feishuAppSecret: String(params.feishuAppSecret ?? "").trim(),
     feishuAppToken: String(params.feishuAppToken ?? "").trim(),
-    customBaseUrl: normalizeBaseUrl(String(params.customBaseUrl ?? "").trim()) || YUNWU_API_BASE_URL,
+    customBaseUrl: normalizeBaseUrl(String(params.customBaseUrl ?? "").trim()) || BOFT_API_BASE_URL,
     writeBackMode: selectToString(params.writeBackMode, "return"),
     writeBackTableId: String(params.writeBackTableId ?? "").trim(),
     writeBackRecordId: String(params.writeBackRecordId ?? "").trim(),
@@ -448,7 +448,7 @@ async function createDirectImages(
   context: ExecuteContext
 ): Promise<GeneratedImage[]> {
   const fetchImpl = context.fetch;
-  const requestUrl = `${params.customBaseUrl}${YUNWU_GENERATIONS_ENDPOINT}`;
+  const requestUrl = `${params.customBaseUrl}${BOFT_GENERATIONS_ENDPOINT}`;
   const body: Record<string, unknown> = {
     model: params.model,
     prompt: params.prompt,
@@ -475,7 +475,7 @@ async function createDirectImages(
       },
       body: bodyText
     },
-    YUNWU_AUTH_ID,
+    BOFT_AUTH_ID,
     "createDirectImages"
   );
 
@@ -532,7 +532,7 @@ async function fetchWithNetworkRetry(
       if (shouldRetryProviderStatus(response.status) && attempt < maxAttempts) {
         console.log(
           JSON.stringify({
-            type: "yunwu_http_retry",
+            type: "boft_http_retry",
             phase,
             attempt,
             status: response.status,
@@ -550,7 +550,7 @@ async function fetchWithNetworkRetry(
       }
       console.log(
         JSON.stringify({
-          type: "yunwu_network_retry",
+          type: "boft_network_retry",
           phase,
           attempt,
           message: error instanceof Error ? error.message : String(error)
@@ -1219,14 +1219,14 @@ async function assertProviderResponse(response: Response, phase: string, target:
   const message = await parseProviderError(response);
   console.log(
     JSON.stringify({
-      type: "yunwu_provider_error",
+      type: "boft_provider_error",
       phase,
       target,
       status: response.status,
       message
     })
   );
-  throw new FieldMappedError(mapStatusToFieldCode(response.status), `云雾接口调用失败：${message}`);
+  throw new FieldMappedError(mapStatusToFieldCode(response.status), `BOFT 接口调用失败：${message}`);
 }
 
 async function parseProviderError(response: Response) {
@@ -1469,7 +1469,7 @@ function logDirectRequest(requestUrl: string, body: Record<string, unknown>, bod
   const images = Array.isArray(body.image) ? body.image : [];
   console.log(
     JSON.stringify({
-      type: "yunwu_direct_request",
+      type: "boft_direct_request",
       requestUrl,
       model: body.model,
       prompt: body.prompt,

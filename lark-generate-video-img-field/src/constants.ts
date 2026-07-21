@@ -1,5 +1,4 @@
 export const VIDEO_AUTH_ID = "video_gateway_auth";
-export const YUNWU_AUTH_ID = VIDEO_AUTH_ID;
 
 export const HAPPYHORSE_DEFAULT_BASE_URL = "https://model-router.edu-aliyun.com/v1";
 export const HAPPYHORSE_GENERATIONS_ENDPOINT = "/videos/generations";

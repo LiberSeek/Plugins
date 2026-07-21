@@ -5,7 +5,7 @@ import {
   FieldComponent,
   FieldType
 } from "@lark-opdev/block-basekit-server-api";
-import { DEFAULT_DURATION, DEFAULT_MODEL, DEFAULT_RESOLUTION, YUNWU_AUTH_ID } from "./constants";
+import { DEFAULT_DURATION, DEFAULT_MODEL, DEFAULT_RESOLUTION, VIDEO_AUTH_ID } from "./constants";
 import { executeImageGeneration } from "./imageClient";
 
 const shortcutIcon =
@@ -25,7 +25,7 @@ basekit.addDomainList([
 basekit.addField({
   authorizations: [
     {
-      id: YUNWU_AUTH_ID,
+      id: VIDEO_AUTH_ID,
       label: "Video Gateway API Key",
       platform: "connect_ai",
       type: AuthorizationType.HeaderBearerToken,

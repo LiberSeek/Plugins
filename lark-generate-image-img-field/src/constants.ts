@@ -1,7 +1,7 @@
-export const YUNWU_AUTH_ID = "yunwu_auth";
+export const BOFT_AUTH_ID = "boft_auth";
 
-export const YUNWU_API_BASE_URL = "https://api.boft.ai/v1";
-export const YUNWU_GENERATIONS_ENDPOINT = "/images/generations";
+export const BOFT_API_BASE_URL = "https://api.boft.ai/v1";
+export const BOFT_GENERATIONS_ENDPOINT = "/images/generations";
 
 export const DEFAULT_MODEL = "gpt-image-2";
 export const TASK_MODEL = "gpt-image-2";

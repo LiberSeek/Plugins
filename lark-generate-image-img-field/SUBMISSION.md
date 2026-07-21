@@ -5,7 +5,7 @@
 - 插件名称：生成图片 img
 - 插件类型：飞书多维表字段捷径 FaaS 插件
 - 字段结果类型：附件
-- 一句话介绍：在多维表中调用云雾图像模型，将文本和参考图生成的图片写回附件字段。
+- 一句话介绍：在多维表中调用 BOFT 图像模型，将文本和参考图生成的图片写回附件字段。
 
 ## 上传材料
 
@@ -15,11 +15,11 @@
 
 ## 授权说明
 
-插件使用飞书托管的 API Key 授权，授权项为「云雾 API Key」。用户在字段配置面板中关联账号后，插件通过 `context.fetch(..., "yunwu_auth")` 自动携带 Bearer Token，请求云雾接口。
+插件使用飞书托管的 API Key 授权，授权项为「BOFT API Key」。用户在字段配置面板中关联账号后，插件通过 `context.fetch(..., "boft_auth")` 自动携带 Bearer Token，请求 BOFT 接口。
 
 ## 外部域名
 
-- `yunwu.ai`
+- `api.boft.ai`
 - `feishu.cn`
 - `feishucdn.com`
 - `larksuitecdn.com`

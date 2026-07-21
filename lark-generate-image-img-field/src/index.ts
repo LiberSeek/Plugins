@@ -8,7 +8,7 @@ import {
 import {
   DEFAULT_IMAGE_COUNT,
   DEFAULT_SIZE,
-  YUNWU_AUTH_ID
+  BOFT_AUTH_ID
 } from "./constants";
 import { executeImageGeneration } from "./imageClient";
 
@@ -29,7 +29,7 @@ basekit.addDomainList([
 basekit.addField({
   authorizations: [
     {
-      id: YUNWU_AUTH_ID,
+      id: BOFT_AUTH_ID,
       label: "BOFT API Key",
       platform: "connect_ai",
       type: AuthorizationType.HeaderBearerToken,
